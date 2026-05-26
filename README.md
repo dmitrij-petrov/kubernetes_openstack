@@ -1,11 +1,24 @@
-# k8s-on-openstack
+# kubernetes_openstack
 
-An opinionated way to deploy a Kubernetes cluster on top of an OpenStack cloud.
+Ansible and kubeadm workflow for deploying Kubernetes on OpenStack.
 
-It is based on the following tools:
+This repository is for operators who want a reproducible way to stand up and tear down Kubernetes clusters on top of OpenStack infrastructure using automation instead of manual control-plane assembly.
 
-  * `kubeadm`
-  * `ansible`
+## What it does
+
+- Provisions cluster infrastructure in OpenStack
+- Bootstraps a Kubernetes control plane with `kubeadm`
+- Adds worker nodes
+- Supports cluster teardown
+- Includes certificate update workflow
+
+## Deployment model
+
+The workflow assumes OpenStack credentials, an existing SSH keypair, and a small set of environment-specific inputs such as image, network, flavors, node counts, and storage options. The automation is designed to cover both basic clusters and more customized OpenStack-backed deployments.
+
+## Example use case
+
+A platform team needs to create a short-lived Kubernetes environment in OpenStack for testing or service rollout validation. Instead of manually provisioning instances, configuring networking, and initializing the cluster by hand, this repository provides one deployment workflow from infrastructure to working cluster.
 
 ## Getting started
 
